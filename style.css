@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--primary-text-color);
+}
+
+:root {
+  --background-color: #000;
+  --background-task-color: #1a1a1a;
+  --button-primary-color: #292828;
+  --primary-text-color: #f4f4f4;
+
+  --color-white: #fff;
+  --color-black: #000;
+  --color-skyblue-light: #456882;
+  --color-red-light: #ff4d4d;
+
+  /* Padding */
+  --nav-padding: 15px 30px;
+  --section-padding: 15px 30px;
+  --padding-sm: 5px;
+  --padding-md: 10px;
+  --padding-lg: 15px;
+  --padding-xl: 20px;
+  --padding-xxl: 30px;
+
+  /* Radius */
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 20px;
+}
+
+.nav {
+  padding: var(--nav-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav button {
+  background-color: var(--button-primary-color);
+  border: none;
+  outline: none;
+  color: var(--primary-text-color);
+  padding: var(--padding-md) var(--padding-lg);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--color-white);
+  color: var(--button-primary-color);
+}
+
+main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+section {
+  padding: var(--section-padding);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--padding-xxl);
+
+  flex-grow: 1;
+}
+
+section .task-cloumn {
+  padding: var(--padding-xl) var(--padding-xxl);
+  border-radius: var(--radius-sm);
+  flex-grow: 1;
+  background-color: var(--button-primary-color);
+  border: 1px solid var(--color-white);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-lg);
+}
+
+section .task-cloumn .heading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section .task-cloumn .task {
+  background-color: var(--background-task-color);
+  padding: var(--padding-md);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-sm);
+}
+
+section .task-cloumn .task button {
+  align-self: flex-end;
+  cursor: pointer;
+  padding: var(--padding-sm) var(--padding-md);
+  border-radius: var(--radius-sm);
+  border: none;
+  outline: none;
+  background-color: var(--color-red-light);
+  color: var(--color-white);
+}
