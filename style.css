@@ -123,3 +123,7 @@ section .task-cloumn .task button {
   background-color: var(--color-red-light);
   color: var(--color-white);
 }
+
+.modal{
+    
+}
