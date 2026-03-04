@@ -1,6 +1,9 @@
+let taskData = {};
+
 const todo = document.querySelector("#to-do");
 const progress = document.querySelector("#in-progress");
 const done = document.querySelector("#done");
+const columns = [todo, progress, done];
 
 let draggedTask = null;
 
@@ -20,7 +23,7 @@ progress.addEventListener("dragleave", (e) => {
   progress.classList.remove("hover-over");
 });
 
-function addDragEvent(col) {
+function addDragEventCol(col) {
   col.addEventListener("dragenter", (e) => {
     e.preventDefault();
     col.classList.add("hover-over");
@@ -36,11 +39,55 @@ function addDragEvent(col) {
 
   col.addEventListener("drop", (e) => {
     e.preventDefault();
-    
     col.appendChild(draggedTask);
+    col.classList.remove("hover-over");
+
+    columns.forEach((col) => {
+      const task = col.querySelectorAll(".task");
+      const count = col.querySelector(".right");
+      const todoTasks = todo.document.querySelectorAll(".task");
+      count.innerText = task.length;
+    });
   });
 }
 
-addDragEvent(todo);
-addDragEvent(progress);
-addDragEvent(done);
+addDragEventCol(todo);
+addDragEventCol(progress);
+addDragEventCol(done);
+
+// Modal
+const toggleModalBtn = document.querySelector("#toggle-modal");
+const modal = document.querySelector(".modal");
+const modalBg = document.querySelector(".modal .bg");
+const addNewTask = document.querySelector("#add-new-task");
+
+toggleModalBtn.addEventListener("click", () => {
+  modal.classList.toggle("active");
+});
+
+modalBg.addEventListener("click", () => {
+  modal.classList.remove("active");
+});
+
+addNewTask.addEventListener("click", () => {
+  const taskTitle = document.querySelector("#task-title").value;
+  const taskDescription = document.querySelector("#task-description").value;
+
+  const div = document.createElement("div");
+  div.classList.add("task");
+  div.setAttribute("draggable", "true");
+
+  div.innerHTML = `
+  <h2>${taskTitle}</h2>
+  <p>${taskDescription}</p>
+  <button>Delete</button>
+  `;
+
+  todo.appendChild(div);
+
+  div.addEventListener("drag", (e) => {
+    draggedTask = div;
+  });
+
+  modal.classList.remove("active");
+});
